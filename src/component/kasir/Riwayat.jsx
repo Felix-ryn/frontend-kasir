@@ -8,6 +8,7 @@ export default function Riwayat() {
   const [transaksi, setTransaksi] = useState([]);
   const [meja, setMeja] = useState([]);
   const [nomor_meja, setNomorMeja] = useState("");
+  const [search, setValue] = useState("");
   useEffect(() => {
     const fecthDatas = async () => {
       try {
@@ -18,7 +19,6 @@ export default function Riwayat() {
         setTransaksi(response.data.data);
 
         const res = await axios.get("http://localhost:8080/meja/", { headers });
-        console.log(res.data.data);
         setMeja(res.data.data);
       } catch (err) {
         console.log(err);
@@ -26,7 +26,14 @@ export default function Riwayat() {
     };
     fecthDatas();
   }, []);
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    const dataFilterred = transaksi.filter((data) => {
+      if(data.nama_user.includes(e.target.value) ) return data;
 
+    });
+    setTransaksi(dataFilterred);
+  };
   const handleBayar = async (id) => {
     const selectedTransaksi = transaksi.find((select) => select.id === id);
     // const selectedMeja = meja.find((select) => select.id === selectedTransaksi.meja.id)
@@ -74,6 +81,16 @@ export default function Riwayat() {
 
   return (
     <div>
+     <input
+        type="text"
+        value={search}
+        onChange={(e) => {
+          handleChange(e);
+        }}
+        name="seach"
+        placeholder="Search..."
+        className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-800 dark:text-gray-100 focus:dark:bg-gray-900"
+      />
       <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
         <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
           <thead className="bg-gray-50">

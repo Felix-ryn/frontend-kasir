@@ -87,7 +87,7 @@ export default function Meja() {
             toast.info("Nomor meja sudah terdaftar");
         } else {
             try {
-                await axios.post("http://localhost:8080/meja/", addMeja, {headers})
+                await axios.post("http://localhost:8080/meja/add", addMeja, {headers})
                 window.location.reload()
             } catch (err) {
                 console.log(err)
@@ -115,20 +115,20 @@ export default function Meja() {
         <div>
             <div className="my-8 mx-16">
                 <div>
-                    <button onClick={() => setShowModalAdd(true)} type="button" className="mb-1 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800">
+                    <button onClick={() => setShowModalAdd(true)} type="button" className="mb-1 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-green-700 hover:bg-green-800 focus:ring-green-900">
                         Tambahkan Meja
                     </button>
                 </div>
                 <div className="flex flex-wrap gap-5 ">
                     <div className="w-full relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left text-gray-500">
-                            <thead className="text-xs text-white uppercase bg-gray-800">
+                            <thead className="text-xs text-white uppercase bg-gray-900">
                                 <tr>
                                     <th scope="col" className="px-6 py-3 text-center">
                                         Nomor Meja
                                     </th>
-                                    <th scope="col" className="pl-6 py-3 text-right">
-                                        <span className="sr-only">Edit / Delete</span>
+                                    <th scope="col" className="px-6 py-3 text-right">
+                                        Action
                                     </th>
                                 </tr>
                             </thead>

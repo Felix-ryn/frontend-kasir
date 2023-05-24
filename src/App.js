@@ -18,10 +18,10 @@ import LayoutKasir from './component/shared/LayoutKasir';
 import Pemesanan from './component/kasir/Pemesanan';
 import Riwayat from './component/kasir/Riwayat'
 
-//manager pages
-import LayoutManager from './component/shared/LayoutManager'
-import Chart from './component/manager/Chart'
-import DataTransaksi from './component/manager/DataTransaksi';
+// //manager pages
+// import LayoutManager from './component/shared/LayoutManager'
+// import Chart from './component/manager/Chart'
+// import DataTransaksi from './component/manager/DataTransaksi';
 
 function App() {
   if (sessionStorage.getItem('logged') !== "true") {
@@ -66,21 +66,22 @@ function App() {
         </Routes>
       </Router>
     )
-  } else if (sessionStorage.getItem('logged') === "true" && sessionStorage.getItem('role') === "manager") {
-    //Pages role manager
-    return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<LayoutManager />}>
-            <Route index element={<Chart />} />
-            <Route path="/data_transaksi" element={<DataTransaksi />} />
-            {/* <Route path="/tes_123" element={<Tes />} /> */}
-          </Route>
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </Router>
-    )
   }
+//  else if (sessionStorage.getItem('logged') === "true" && sessionStorage.getItem('role') === "manager") {
+//     //Pages role manager
+//     return (
+//       <Router>
+//         <Routes>
+//           <Route path="/" element={<LayoutManager />}>
+//             <Route index element={<Chart />} />
+//             <Route path="/data_transaksi" element={<DataTransaksi />} />
+//             {/* <Route path="/tes_123" element={<Tes />} /> */}
+//           </Route>
+//           <Route path='*' element={<NotFound />} />
+//         </Routes>
+//       </Router>
+//     )
+//   }
 }
 
 export default App;

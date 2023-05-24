@@ -49,7 +49,7 @@ export default function EditUser() {
     const handleChange = (e) => {
         setPrevData(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
-
+    
     //input data ke database
     const handleClick = async e => {
         e.preventDefault()
@@ -89,7 +89,7 @@ export default function EditUser() {
                                     <option value="">Role</option>
                                     <option value="kasir">Kasir</option>
                                     <option value="admin">Admin</option>
-                                    <option value="manager">Manager</option>
+                                    {/* <option value="manager">Manager</option> */}
                                 </select>
                             </div>
                             <div>
